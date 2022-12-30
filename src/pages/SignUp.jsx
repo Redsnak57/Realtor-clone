@@ -7,6 +7,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase
 import {db} from "../firebase"
 import { serverTimestamp, doc, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import OupsBtn from "../components/OupsBtn/OupsBtn";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -37,8 +38,8 @@ export default function SignUp() {
       formDataCopy.timestamp = serverTimestamp();
 
       await setDoc(doc(db,"users", user.uid), formDataCopy)
-      toast.success("Sign Up was successful ! ");
-      navigate("/");
+      // toast.success("Sign Up was successful ! ");
+      // navigate("/");
     } catch (error) {
       toast.error("Something went wront with your registration.");
     }
@@ -95,25 +96,8 @@ export default function SignUp() {
               )}
             </div>
 
-            <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6">
-              <p>
-                Already have a account ?
-                <Link
-                  to="/sign-in"
-                  className="text-red-500 hover:text-red-400 transition duration-200 ease-in-out"
-                >
-                  Sign In
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="/forgot-password"
-                  className="text-blue-500 hover:text-blue-400 transition duration-200 ease-in-out"
-                >
-                  Forgot Password ?
-                </Link>
-              </p>
-            </div>
+            <OupsBtn name='Have a account ?' url="/sign-in" urlName="Sign In" secondName="Forget your password ?" />
+
             <SignInBtn name="Sign Up"/>
             <div className="flex items-center my-4 before:border-t before:flex-1  before:border-gray-400 after:border-t after:flex-1  after:border-gray-400">
               <p className="text-center font-semibold mx-4">OR</p>
