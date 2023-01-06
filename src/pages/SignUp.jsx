@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth/OAuth";
 import SignInBtn from "../components/SignInBtn/SignInBtn";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
