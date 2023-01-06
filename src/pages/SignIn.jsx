@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth/OAuth";
 import OupsBtn from "../components/OupsBtn/OupsBtn";
 import SignInBtn from "../components/SignInBtn/SignInBtn";
@@ -79,7 +79,7 @@ export default function SignIn() {
               )}
             </div>
 
-            <OupsBtn name="Don't have a account ?" url="/sign-up" urlName="Register" secondName="Forget your password ?" />
+            <OupsBtn name="Don't have a account ?" url="/sign-up" urlName="Register" secondName="Forget your password ?" secondUrl="/forgot-password" />
             
             <SignInBtn name="sign in"/>
             <div className="flex items-center my-4 before:border-t before:flex-1  before:border-gray-400 after:border-t after:flex-1  after:border-gray-400">

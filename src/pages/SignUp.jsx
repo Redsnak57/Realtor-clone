@@ -96,7 +96,7 @@ export default function SignUp() {
               )}
             </div>
 
-            <OupsBtn name='Have a account ?' url="/sign-in" urlName="Sign In" secondName="Forget your password ?" />
+            <OupsBtn name='Have a account ?' url="/sign-in" urlName="Sign In" secondName="Forget your password ?" secondUrl="/forgot-password" />
 
             <SignInBtn name="Sign Up"/>
             <div className="flex items-center my-4 before:border-t before:flex-1  before:border-gray-400 after:border-t after:flex-1  after:border-gray-400">

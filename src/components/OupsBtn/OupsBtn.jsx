@@ -15,7 +15,7 @@ export default function OupsBtn(props) {
       </p>
       <p>
         <Link
-          to="/forgot-password"
+          to={props.secondUrl}
           className="text-blue-500 hover:text-blue-400 transition duration-200 ease-in-out"
         >
           {props.secondName}

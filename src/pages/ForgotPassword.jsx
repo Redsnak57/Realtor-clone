@@ -1,12 +1,25 @@
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import OAuth from "../components/OAuth/OAuth";
+import OupsBtn from "../components/OupsBtn/OupsBtn";
 import SignInBtn from "../components/SignInBtn/SignInBtn";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState();
   function onChange(e) {
     setEmail(e.target.value);
+  }
+
+  async function onSubmit(e){
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Successfully sent password reset email");
+    } catch (error) {
+      toast.error("Unknown email")
+    }
   }
 
   return (
@@ -21,7 +34,7 @@ export default function ForgotPassword() {
           />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20 mt-5">
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               type="email"
               className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out"
@@ -30,25 +43,9 @@ export default function ForgotPassword() {
               onChange={onChange}
               placeholder="Email address"
             />
-            <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6">
-              <p>
-                Don't have a account ?
-                <Link
-                  to="/sign-up"
-                  className="text-red-500 hover:text-red-400 transition duration-200 ease-in-out"
-                >
-                  Register
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="/sign-in"
-                  className="text-blue-500 hover:text-blue-400 transition duration-200 ease-in-out"
-                >
-                  Sign in instead
-                </Link>
-              </p>
-            </div>
+
+            <OupsBtn name="Don't have a account ?" url="/sign-up" urlName="Register" secondName="Sign in instead" secondUrl="/sign-in" />
+
             <SignInBtn name="Reset password"/>
             <div className="flex items-center my-4 before:border-t before:flex-1  before:border-gray-400 after:border-t after:flex-1  after:border-gray-400">
               <p className="text-center font-semibold mx-4">OR</p>
